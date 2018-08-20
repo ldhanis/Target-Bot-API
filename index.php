@@ -44,7 +44,6 @@
 			curl_close($curl);
 
 			//Ok now handle the response
-			//echo $resp;
 			$output = json_decode($resp, true);
 			if ($output['errors'])
 			{
@@ -55,7 +54,6 @@
 			}
 			else
 			{
-				//var_dump($output['response']);
 				foreach ($output['response']['messages'] as $response)
 				{
 					switch ($response['type']){
@@ -63,16 +61,16 @@
 							$m = new API_TextMsg();
 							break;
 						case 2 :
-							//$m = new UrlMessage($this->_bdd);
+							//To implement
 							break;
 						case 3 :
-							//$m = new ImageMessage($this->_bdd);
+							//To implement
 							break;
 						case 4 :
-							//$m = new QRMessage($this->_bdd);
+							//To implement
 							break;
 						case 5 :
-							//$m = new LocationMessage($this->_bdd);
+							//To implement
 							break;
 					}
 					$m->value_from_output($response);
@@ -85,7 +83,6 @@
 						$a->set_by_array ($output['response']['action']);
 						break;
 					case 4 :
-						//$m = new QRMessage($this->_bdd);
 						break;
 				}
 				$chat->add_action($a);
@@ -106,7 +103,5 @@
 		$chat->display_chat_content();
 	}
 	else
-		echo 'Use the get parameter with the "cid" key to say which campain to test (campain id) or try with your external identifier to launch the distant API requests<br/>
-			<a href="?cid=38">Click here to test campain 38</a><br/>
-			<a href="?cid=38">Click here to test campain 38</a>';
+		echo 'use get parameter "cid" with the unique key given at the API setting to start using this script<br/>';
 ?>
